@@ -1,16 +1,23 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("entries.urls")),
+]
 
 urlpatterns[
     path(
         "",
-        views.blog,
-        name="blog",
+        views.profile,
+        name="profile",
     ),
 ]
 
 urlpatterns[
-    path("", views.resources, name="resources"),
+    path("", views.resource, name="resource"),
 ]
 
 urlpatterns[
