@@ -1,24 +1,10 @@
 from django.shortcuts import render
-
+rom django.shortcuts import render, get_object_or_404, redirect
+from .models import 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .forms import EditorForm, CommentForm
 # Create your views here.
-def blog(request):
-    # return render(request)
-    if request.method == "GET":
-        return render(
-            request, "blog.html",
-        )
-
-
-def resource(request):
-    # return render(request)
-    if request.method == "GET":
-    #     print(Resource.objects.all())
-    #     # print(data.resource_id)
-        return render(request,'resource.html')
-            # request=request,
-            # template_name="resource.html",
-            # context={"source": source},
-        # )
 
 
 def home(request):
@@ -26,4 +12,11 @@ def home(request):
 
 
 def client(request):
-    return render(request, 'client.html')
+    return render(request, 'client.htm')
+
+def resource(request):
+    return render(request, 'resoure.html')
+
+def blog(request):
+    return render(request, 'blog.html')
+

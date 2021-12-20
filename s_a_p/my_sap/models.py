@@ -3,10 +3,16 @@ from django.conf import settings
 from django.contrib import admin
 from django.db.models.base import Model
 
-# from .models import Profile, Post, Tag
+# from blog.models import Profile, Post, Tag
 
 # Create your models here.
 
+
+class Home(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    technology = models.CharField(max_length=20)
+    image = models.CharField(max_length=100)
 # blog
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -45,15 +51,24 @@ class Post(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
 
+class Client(models.Model):
+    title = models.CharField (max_length=200)
+    description = models.TextField()
+    technology = models.CharField (max_length = 20)
+    image = models.CharField (max_length = 100)
 
 class Resource(models.Model):
     resource_id = models.AutoField(primary_key=True)
     resouce_link = models.URLField()
 
 
-class Home(models.Model):
-    title = models.CharField(max_length=200)
+
+
+class Blog(models.Model):
+    title = models.CharField (max_length=200)
     description = models.TextField()
+    technology = models.CharField (max_length = 20)
+    image = models.CharField (max_length = 100)
     technology = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
 
