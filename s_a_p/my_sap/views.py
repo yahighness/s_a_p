@@ -1,5 +1,8 @@
 from django.shortcuts import render
-rom django.shortcuts import render, get_object_or_404, redirect
+
+ 
+
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -19,4 +22,5 @@ def resource(request):
 
 def blog(request):
     return render(request, 'blog.html')
+
 
