@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib import admin
+from django.db.models.base import Model
 
 # from .models import Profile, Post, Tag
 
@@ -17,7 +18,7 @@ class Profile(models.Model):
     bio = models.CharField(max_length=240, blank=True)
 
     def __str__(self):
-        return serlf.user.get_username()
+        return self.user.get_username()
 
 
 class Tag(models.Model):
@@ -54,4 +55,10 @@ class Home(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     technology = models.CharField(max_length=20)
+    image = models.CharField(max_length=100)
+
+class Client(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    technology = models.CharField(max_length=200)
     image = models.CharField(max_length=100)
