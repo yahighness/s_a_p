@@ -1,8 +1,23 @@
 from django.db import models
 from django.conf import settings
 from django.contrib import admin
+
 # from .models import Profile, Post, Tag
 # Create your models here.
+
+from django.db.models.base import Model
+
+# from blog.models import Profile, Post, Tag
+
+# Create your models here.
+
+
+class Home(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    technology = models.CharField(max_length=20)
+    image = models.CharField(max_length=100)
+
 # blog
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -13,6 +28,7 @@ class Profile(models.Model):
     bio = models.CharField(max_length=240, blank=True)
     def __str__(self):
         return self.user.get_username()
+
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     def _str_(self):
@@ -31,20 +47,32 @@ class Post(models.Model):
     published = models.BooleanField(default=False)
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
+
 class Resource(models.Model):
     resource_id = models.AutoField(primary_key=True)
     resouce_link = models.URLField()
+    
 class Home(models.Model):
     title = models.CharField(max_length=200)
+
+
+class Client(models.Model):
+    title = models.CharField (max_length=200)
     description = models.TextField()
+    technology = models.CharField (max_length = 20)
+    image = models.CharField (max_length = 100)
+
+class Resource(models.Model):
+    resource_id = models.AutoField(primary_key=True)
+    resouce_link = models.URLField()
+
+
+
+class Blog(models.Model):
+    title = models.CharField (max_length=200)
+    description = models.TextField()
+    technology = models.CharField (max_length = 20)
+    image = models.CharField (max_length = 100)
     technology = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
-
-
-
-
-
-
-
-
 
