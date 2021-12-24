@@ -1,6 +1,6 @@
 ***Succes After Prison Project***
 
-***Creators: The Queens of Code***
+***Creators: Queens of Code***
 
 Emma Barbosa, Fatima Monteiro, Maleka Brown, Shameeka France
 #
@@ -35,7 +35,8 @@ It has been a fruitful experience, working together and learning from one anothe
 
 We want to thank the JTC Group who has taken the time to teach us all these great tools to help us advance in our technical field.
 
-The Queens of Code
+Queens of Code
+JTC is the origin of Queens of Code and will be forever grateful for the opportunity given to master a new lanuage.  We are women, grandmothers,mothers, aunts and providers. We represent how a bond is formed from a circle of support when every one can come together for one common goal which is needed to excel beyond expectation.  
 __________________________________________
 
 
