@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.contrib.auth.models import User
+
 # Create your views here.
 def blog(request):
     # return render(request)
@@ -26,4 +28,10 @@ def home(request):
 
 
 def client(request):
+    if request.method == "POST":
+        print(request.POST)
+        username = request.POST["username"]
+        user, created = User.objects.get_or_create(username=username, defaults={"first_name": request.POST["fname"], "last_name": request.POST["lname"]})
+        if not created:
+            print(f"username {username} already taken")
     return render(request, 'client.html')
