@@ -19,7 +19,11 @@ We were very excited in creating this wonderful app to assist all New York Resid
 We are very thankful for this amazing opportunity in being part of this cohort with these amazing ladies who all have a story to tell. We all felt we needed to give back to the ladies that will come after us who can see that our past mistakes have not defined who we are today.
 
 # *** Here are the steps to successfully run the Success After Prison App:***
-Run the file in the terminal.
+Run the file in the terminal, use the command:
+python manage.py runserver
+
+Run Server (http://127.0.0.1:8000) CTRL+C to stop
+
 
 There are four fully functional pages, beginning with the Home Page, Client Page, Resource Page and Blog Page.
 
