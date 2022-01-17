@@ -5,10 +5,13 @@ from django.contrib.auth.models import User
 # Create your views here.
 def blog(request):
     # return render(request)
-    if request.method == "GET":
-        return render(
-            request, "blog.html",
-        )
+    if request.method == "POST":
+        print("title:", request.POST.get("title"))
+        print("subtitle:", request.POST.get("subtitle"))
+        print("feedback:", request.POST.get("body"))
+    return render(
+        request, "blog.html",
+    )
 
 
 def resource(request):
