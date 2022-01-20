@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.contrib.auth.models import User
+from my_sap.models import Profile
 
 # Create your views here.
 def blog(request):
@@ -37,4 +38,7 @@ def client(request):
         user, created = User.objects.get_or_create(username=username, defaults={"first_name": request.POST["fname"], "last_name": request.POST["lname"]})
         if not created:
             print(f"username {username} already taken")
+        bio = request.POST["bio"]
+        profile, created = Profile.objects.get_or_create(user=user, defaults={"bio": bio})  
+            
     return render(request, 'client.html')
