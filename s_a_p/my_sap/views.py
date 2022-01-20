@@ -1,15 +1,18 @@
 from django.shortcuts import render
 
 from django.contrib.auth.models import User
-from my_sap.models import Profile
+from my_sap.models import Post, Profile
 
 # Create your views here.
 def blog(request):
     # return render(request)
     if request.method == "POST":
-        print("title:", request.POST.get("title"))
-        print("subtitle:", request.POST.get("subtitle"))
-        print("feedback:", request.POST.get("body"))
+        title = request.POST.get("title")
+        subtitle = request.POST.get("subtitle")
+        feedback = request.POST.get("body")
+        username = request.POST["username"]
+        profile = Profile.objects.get(user__username=username)
+        feedback_post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
     return render(
         request, "blog.html",
     )
