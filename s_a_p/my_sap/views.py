@@ -13,9 +13,9 @@ def blog(request):
         username = request.POST["username"]
         profile = Profile.objects.get(user__username=username)
         feedback_post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
-    return render(
-        request, "blog.html",
-    )
+    posts = Post.objects.all()
+    context = {"posts": posts}
+    return render(request, "blog.html", context)
 
 
 def resource(request):

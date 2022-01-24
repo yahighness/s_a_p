@@ -26,5 +26,16 @@
     <textarea id="body" name="body"></textarea><br>
 	<input type="submit" value="Submit">
 </form>
+<h2>Feedback</h2>
+<ul>
+  {% for post in posts %}
+    <li>
+      {{ post.title }}<br>
+      {{ post.subtitle }}<br>
+      {{ post.body }}<br>
+      - {{ post.author }}
+    </li>
+  {% endfor %}
+</ul>
 </body>
 </html>
