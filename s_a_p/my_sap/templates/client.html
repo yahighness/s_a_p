@@ -22,18 +22,22 @@
 
 
 <h2>Client Information</h2>
-<form action="/action_page.php">
+<form action="" method="post">
+    {% csrf_token %}
+
+    <label for="username">User name:</label><br>
+    <input type="text" id="username" name="username" placeholder="jdoe"><br>
+
     <label for="fname">First name:</label><br>
     <input type="text" id="fname" name="fname" placeholder="Jane"><br>
+
     <label for="lname">Last name:</label><br>
     <input type="text" id="lname" name="lname" placeholder="Doe"><br><br>
-    <label for="Date of Birth">Date of Birth:</label><br>
-    <input type="text" id="Date of Birth" Date of Birth="fname" placeholder="01-01-1983"><br>
-    <label for="fname">Gender:</label><br>
-    <input type="text" id="fname" Gender="fname" placeholder="Female"><br>
-    <label for="fname">Phone Number:</label><br>
-    <input type="text" id="fname" Phone Number="fname" placeholder="555-555-5555"><br>
-    <input type="submit" value="Submit">
+
+    <label for="bio"> Bio:</label><br>
+    <textarea id="bio" name="bio"></textarea><br>
+
+     <input type="submit" value="Submit">
 </form>
 <p>If you click the "Submit" button".</p>
 

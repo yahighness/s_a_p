@@ -2,53 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width",
 	<title> Success After Prison Blog</title>
-
-	<!--font awesome icons cdn -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com"
-
-    
-
-	<!-------custom style.css file------> 
-	<link rel="stylesheet" href="style.css">
-
-
-
 </head>
 <body>
-<!-- Header-->
-	<p class="margin auto",</p>
-		<header id ="header" class="shadow"bg-light">
-			<nav class="container navbar">
-				<a href="/blog.html" class="nav-brand text-dark"
-				Success After Prison Blog
-			</a>
-			<!--toggle button-->
-			<button class="toggle-button">
-				<span>i class = "fas fa-bars">/i/></span>
-			</button>
-			<!-- collapse on toggle button click-->
-			<div class="collapse">
-				<ul class="navbar-nav">
-					<a href="#" class="nav-link">Home</a>
-					<a href="#" class="nav-link">Client</a>
-					<a href="#" class="nav-link">Resource</a>
-					<a href="#" class="nav-link">Blog</a>
-				</ul>
-			</div>
-		</nav>nav>
-	</header>		
-<!-- Header-->
-
-</body>
-
-
-<center>
 <h1>Success After Prison</h1>
-
-
-
 <div class= "container">
 	<a href="{% url 'home' %}">Home</a>
 	<a href="{% url 'client' %}">Client</a>
@@ -56,5 +13,18 @@
 	<a href="{% url 'blog' %}">Blog</a>
 	
 </div>
-
-
+<h2>DESCRIBE YOUR EXPERIENCE</h2>
+<form action="" method="post">
+    {% csrf_token %}
+	<label for="username"> username:</label><br>
+    <input type="text" id="username" name="username"><br>
+	<label for="title"> title:</label><br>
+    <input type="text" id="title" name="title"><br>
+	<label for="subtitle"> subtitle:</label><br>
+    <input type="text" id="subtitle" name="subtitle"><br>
+    <label for="body"> feedback:</label><br>
+    <textarea id="body" name="body"></textarea><br>
+	<input type="submit" value="Submit">
+</form>
+</body>
+</html>
