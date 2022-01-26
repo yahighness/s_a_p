@@ -10,7 +10,7 @@ This Success After Prison Project was our first Pair Programming Project in the 
 
 We created this app using Django, Python, HTML & CSS, the platform we used was Visual Code.
 
-This code has been created based on all the concepts taught by Justice Through Code.
+This code has been created based on all the tech concepts taught by Justice Through Code.
 
 Once we had put together our vision for this app,  we created files in the Django Program, writing python code, Adding HTML Pages, Creating Style Sheet with CSS, and finally pushing, pulling and merging files through GitHub.
 
