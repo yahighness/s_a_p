@@ -19,15 +19,9 @@ def blog(request):
 
 
 def resource(request):
-    # return render(request)
-    if request.method == "GET":
-    #     print(Resource.objects.all())
-    #     # print(data.resource_id)
-        return render(request,'resource.html')
-            # request=request,
-            # template_name="resource.html",
-            # context={"source": source},
-        # )
+    print("resource request", request)
+    return render(request,'resource.html')
+            
 
 
 def home(request):
