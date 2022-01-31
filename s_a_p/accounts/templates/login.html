@@ -6,17 +6,6 @@
 </head>
 <body>
 <h1>Log In</h1> 
-<form action="" method="post">
-    {% csrf_token %}
-    <div>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text">
-    </div>
-
-</form>
-
-</body>
-<h1>Login</h1>
 <a href={% url "create_account" %}>Create Profile</a>
 <form action="" method="post">
     {% csrf_token %}
@@ -30,5 +19,5 @@
     </div>
     <button type="submit">SIGN IN</button>
 </form>
-
+</body>
 </html>
