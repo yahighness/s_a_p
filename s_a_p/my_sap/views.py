@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 from django.contrib.auth.models import User
 from my_sap.models import Post, Profile
@@ -39,3 +40,21 @@ def client(request):
         profile, created = Profile.objects.get_or_create(user=user, defaults={"bio": bio})  
             
     return render(request, 'client.html')
+
+def edit_post(request, post_id):
+    if request.method == "POST":
+        post =Post.objects.get(id=post_id)
+        context = {"post": post}
+        response = render(request, "edit_post.html", context)
+    print(request.POST)
+    if post.author.user.id != request.user.id:
+        return HttpResponse(status_code=401)
+
+    if request.method == "POST":
+        post.title = request.POST["title"]
+        post.subtitle = request.POST["subtitle"]
+        post.body = request.POST["body"]
+        post.save()
+        response = redirect("blog")
+    return response
+
