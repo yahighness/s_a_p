@@ -1,10 +1,13 @@
-from django.shortcuts import render
-from django.contrib.auth import authenticate
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login as auth_login
 
 def login(request):
     response = render(request, "login.html")
     if request.method == "POST":
-     user    
+        user = authenticate(username=request.POST['username'], password=request.POST['password']) 
+        if user is not None:
+            auth_login(request, user)
+            response = redirect('home')
     return response
 
 
