@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
+from my_sap.models import Profile
 
 def login(request):
     response = render(request, "login.html")
@@ -20,6 +21,7 @@ def create_account(request):
         if created:
             user.set_password(request.POST['password'])
             user.save()
+            Profile.objects.create(user=user)
         response = redirect('login')
     return response
 
