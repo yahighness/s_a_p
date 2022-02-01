@@ -56,5 +56,6 @@ def edit_post(request, post_id):
         post.body = request.POST["body"]
         post.save()
         response = redirect("blog")
+        context = {"posts": posts, "user_id": request.user.id}
     return response
 
