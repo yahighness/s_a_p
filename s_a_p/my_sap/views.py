@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-
-
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from my_sap.models import Post, Profile
 
@@ -49,7 +48,7 @@ def edit_post(request, post_id):
     
     print(request.POST)
     if post.author.user.id != request.user.id:
-        return HttpResponse(status_code=401)
+        return HttpResponse(status=401)
 
     if request.method == "POST":
         post.title = request.POST["title"]
