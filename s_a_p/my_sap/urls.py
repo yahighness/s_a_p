@@ -9,5 +9,5 @@ urlpatterns=[
     path("blog/",views.blog,name="blog"),
     path("resource/", views.resource, name="resource"),
     path("client/", views.client, name="client"),
-    re_path(r"^edit/(?P<post_id>\d+)$", view.edit_post, name="edit-post"),
+    re_path(r"^edit/(?P<post_id>\d+)$", views.edit_post, name="edit-post"),
 ]
