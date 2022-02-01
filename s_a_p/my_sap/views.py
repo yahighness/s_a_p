@@ -42,10 +42,11 @@ def client(request):
     return render(request, 'client.html')
 
 def edit_post(request, post_id):
-    if request.method == "POST":
-        post =Post.objects.get(id=post_id)
-        context = {"post": post}
-        response = render(request, "edit_post.html", context)
+    
+    post = Post.objects.get(id=post_id)
+    context = {"post": post}
+    response = render(request, "edit_post.html", context)
+    
     print(request.POST)
     if post.author.user.id != request.user.id:
         return HttpResponse(status_code=401)
@@ -56,6 +57,6 @@ def edit_post(request, post_id):
         post.body = request.POST["body"]
         post.save()
         response = redirect("blog")
-        context = {"posts": posts, "user_id": request.user.id}
+        
     return response
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Edit Post</title>
+</head>
+<body>
+	<form action="" method="post">
+		{% csrf_token %}
+	  <label for="title"> title:</label><br>
+		<input type="text" id="title" name="title" value="{{ post.title }}"><br>
+	  <label for="subtitle"> subtitle:</label><br>
+		<input type="text" id="subtitle" name="subtitle" value="{{ post.subtitle }}"><br>
+		<label for="body"> feedback:</label><br>
+		<textarea id="body" name="body">{{ post.body }}</textarea><br>
+	  <input type="submit" value="Submit">
+	</form>
+	
+</body>
+</html>
