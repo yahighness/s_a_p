@@ -15,7 +15,7 @@ def blog(request):
         profile = Profile.objects.get(user__username=username)
         feedback_post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
     posts = Post.objects.all()
-    context = {"posts": posts}
+    context = {"posts": posts, "user_id": request.user.id}
     return render(request, "blog.html", context)
 
 
