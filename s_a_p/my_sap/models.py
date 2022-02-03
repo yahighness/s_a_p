@@ -8,6 +8,12 @@ from django.db.models.base import Model
 # Create your models here.
 
 # blog
+class Blog(models.Model):
+    title = models.CharField("Title", max_length=50)
+    text = models.TextField("Text", max_length=200)
+    date = models.DateTimeField("Last Modified")
+
+
 class Profile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -51,6 +57,7 @@ class Home(models.Model):
     description = models.TextField()
     technology = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
+
 
 class Client(models.Model):
     title = models.CharField(max_length=200)
