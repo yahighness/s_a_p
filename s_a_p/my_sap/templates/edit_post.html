@@ -13,8 +13,13 @@
 		<input type="text" id="subtitle" name="subtitle" value="{{ post.subtitle }}"><br>
 		<label for="body"> feedback:</label><br>
 		<textarea id="body" name="body">{{ post.body }}</textarea><br>
-	  <input type="submit" value="Submit">
+	    <input type="submit" value="Submit">
 	</form>
-	
+	<form action="{% url 'delete-post' post_id=post.id %}" method="post">
+		{% csrf_token %}
+		<label for="confirm-delete">Enter "delete" to remove this post:</label>
+        <input type="text" id="confirm-delete" name="confirm_delete" required>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>

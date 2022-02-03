@@ -10,9 +10,8 @@ def blog(request):
         title = request.POST.get("title")
         subtitle = request.POST.get("subtitle")
         feedback = request.POST.get("body")
-        username = request.POST["username"]
-        profile = Profile.objects.get(user__username=username)
-        feedback_post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
+        profile = Profile.objects.get(user=request.user)
+        Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
     posts = Post.objects.all()
     context = {"posts": posts, "user_id": request.user.id}
     return render(request, "blog.html", context)
@@ -22,7 +21,6 @@ def resource(request):
     print("resource request", request)
     return render(request,'resource.html')
             
-
 
 def home(request):
     return render(request, 'home.html')
@@ -46,7 +44,6 @@ def edit_post(request, post_id):
     context = {"post": post}
     response = render(request, "edit_post.html", context)
     
-    print(request.POST)
     if post.author.user.id != request.user.id:
         return HttpResponse(status=401)
 
@@ -59,3 +56,15 @@ def edit_post(request, post_id):
         
     return response
 
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {"post": post}
+    response = render(request, "edit_post.html", context)
+
+    if post.author.user.id != request.user.id:
+        return HttpResponse(status=401)
+    
+    if request.method == "POST" and request.POST["confirm_delete"] == "delete":
+        post.delete()
+        response = redirect("blog") 
+    return response
