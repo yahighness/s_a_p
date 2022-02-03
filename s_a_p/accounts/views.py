@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from my_sap.models import Profile
 
@@ -25,3 +25,8 @@ def create_account(request):
         response = redirect('login')
     return response
 
+
+def logout(request):
+    auth_logout(request)
+    return redirect("login")
+    
