@@ -42,7 +42,15 @@
     <input type="text" id="subtitle" name="subtitle"><br>
     <label for="body"> feedback:</label><br>
     <textarea id="body" name="body"></textarea><br>
-  <input type="submit" value="Submit">
+    <div>
+      <label for="tags">add tags seperated with commas</label>
+    </div>
+    <div>
+      <input type="text" id="tags" name="tags">
+    </div>
+    <div>
+      <input type="submit" value="Submit"> 
+    </div>
 </form>
 <h2>Feedback</h2>
 <ul>
@@ -51,6 +59,7 @@
     {{ post.title }}<br>
     {{ post.subtitle }}<br>
     {{ post.body }}<br>
+    {{ post.tags | join:", " }}
     - {{ post.author }}
     {% if post.author.user.id == user_id %}
       (<a href={% url "edit-post" post_id=post.id %}>edit post</a>)

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from my_sap.models import Post, Profile
+from my_sap.models import Post, Profile, Tag
+
 
 # Create your views here.
 def blog(request):
@@ -11,7 +12,12 @@ def blog(request):
         subtitle = request.POST.get("subtitle")
         feedback = request.POST.get("body")
         profile = Profile.objects.get(user=request.user)
-        Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
+        post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
+        tag_names = request.POST.get("tags")
+        if tag_names:
+            tags = [Tag.objects.create(name=t) for t in tag_names.split(",")]
+            post.tags.add(*tags)
+
     posts = Post.objects.all()
     context = {"posts": posts, "user_id": request.user.id}
     return render(request, "blog.html", context)
