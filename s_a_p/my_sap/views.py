@@ -19,17 +19,18 @@ def blog(request):
             post.tags.add(*tags)
 
     posts = Post.objects.all()
-    context = {"posts": posts, "user_id": request.user.id}
+    context = {"posts": posts, "user_id": request.user.id, "known_user": request.user.is_authenticated}
     return render(request, "blog.html", context)
 
 
 def resource(request):
-    print("resource request", request)
-    return render(request,'resource.html')
+    context = {"known_user": request.user.is_authenticated}
+    return render(request,'resource.html', context=context)
             
 
 def home(request):
-    return render(request, 'home.html')
+    context = {"known_user": request.user.is_authenticated}
+    return render(request, 'home.html', context=context)
 
 
 def client(request):
@@ -41,8 +42,9 @@ def client(request):
             print(f"username {username} already taken")
         bio = request.POST["bio"]
         profile, created = Profile.objects.get_or_create(user=user, defaults={"bio": bio})  
+    context = {"known_user": request.user.is_authenticated}
             
-    return render(request, 'client.html')
+    return render(request, 'client.html', context=context)
 
 def edit_post(request, post_id):
     

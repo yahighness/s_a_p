@@ -24,7 +24,12 @@
         <a href="{% url 'client' %}">Client</a>
         <a href="{% url 'resource' %}">Resource</a>
         <a href="{% url 'blog' %}">Blog</a>
-      <a href="{% url 'logout' %}">logout</a>
+        {% if known_user %}
+        <a href="{% url 'logout' %}">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">login</a> or 
+        <a href="{% url 'create_account' %}">create account</a>
+        {% endif %}
     </div>
     
     <p>Our Resource Library offers direct access to organizations who provide services to support Justice Impacted  individuals. 
