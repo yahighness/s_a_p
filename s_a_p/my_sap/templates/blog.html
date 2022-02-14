@@ -59,7 +59,7 @@
     {{ post.title }}<br>
     {{ post.subtitle }}<br>
     {{ post.body }}<br>
-    {{ post.tags | join:", " }}
+    {{ post.tags.all | join:", " }}
     - {{ post.author }}
     {% if post.author.user.id == user_id %}
       (<a href={% url "edit-post" post_id=post.id %}>edit post</a>)
