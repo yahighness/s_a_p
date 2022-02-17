@@ -13,6 +13,12 @@
 		<input type="text" id="subtitle" name="subtitle" value="{{ post.subtitle }}"><br>
 		<label for="body"> feedback:</label><br>
 		<textarea id="body" name="body">{{ post.body }}</textarea><br>
+		<div>
+			<label for="tags">add tags seperated with commas</label>
+		  </div>
+		  <div>
+			<input type="text" id="tags" name="tags">
+		  </div>
 	    <input type="submit" value="Submit">
 	</form>
 	<form action="{% url 'delete-post' post_id=post.id %}" method="post">

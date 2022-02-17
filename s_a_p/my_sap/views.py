@@ -15,7 +15,7 @@ def blog(request):
         post = Post.objects.create(title=title, subtitle=subtitle, body=feedback, author=profile)
         tag_names = request.POST.get("tags")
         if tag_names:
-            tags = [Tag.objects.create(name=t) for t in tag_names.split(",")]
+            tags = [Tag.objects.get_or_create(name=t)[0] for t in tag_names.split(",")]
             post.tags.add(*tags)
 
     posts = Post.objects.all()
@@ -60,6 +60,10 @@ def edit_post(request, post_id):
         post.subtitle = request.POST["subtitle"]
         post.body = request.POST["body"]
         post.save()
+        tag_names = request.POST.get("tags")
+        if tag_names:
+            tags = [Tag.objects.get_or_create(name=t)[0] for t in tag_names.split(",")]
+            post.tags.add(*tags)
         response = redirect("blog")
         
     return response
