@@ -10,5 +10,6 @@ urlpatterns=[
     path("resource/", views.resource, name="resource"),
     path("client/", views.client, name="client"),
     re_path(r"^edit/(?P<post_id>\d+)$", views.edit_post, name="edit-post"),
+    re_path(r"^remove_tag/(?P<post_id>\d+)/(?P<tag_id>\d+)$", views.remove_tag, name="remove-tag"),
     re_path(r"^delete/(?P<post_id>\d+)$", views.delete_post, name="delete-post"),
 ]

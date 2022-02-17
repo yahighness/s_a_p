@@ -68,6 +68,18 @@ def edit_post(request, post_id):
         
     return response
 
+def remove_tag(request, post_id, tag_id):
+    post = Post.objects.get(id=post_id)
+    
+    if post.author.user.id != request.user.id:
+        return HttpResponse(status=401)
+    
+    tag = Tag.objects.get(id=tag_id)
+    post.tags.remove(tag)
+    
+    return redirect("edit-post", post_id=post_id)
+    
+
 def delete_post(request, post_id):
     post = Post.objects.get(id=post_id)
     context = {"post": post}
