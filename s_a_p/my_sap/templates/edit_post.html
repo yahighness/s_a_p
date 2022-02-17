@@ -21,6 +21,14 @@
 		  </div>
 	    <input type="submit" value="Submit">
 	</form>
+	<div>
+		<ul>
+			{% for tag in post.tags.all %}
+				<li><a href="{% url 'remove-tag' post_id=post.id tag_id=tag.id %}">remove tag {{tag}}</a> </li>
+		    {% endfor %}
+			
+		</ul>
+	</div>
 	<form action="{% url 'delete-post' post_id=post.id %}" method="post">
 		{% csrf_token %}
 		<label for="confirm-delete">Enter "delete" to remove this post:</label>
