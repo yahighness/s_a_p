@@ -33,17 +33,19 @@
 <form action="" method="post">
     {% csrf_token %}
 
-    <label for="username">User name:</label><br>
-    <input type="text" id="username" name="username" placeholder="jdoe"><br>
-
+    <p>User name: {{ profile.user.username }}</p><br>
+    
     <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" placeholder="Jane"><br>
+    <input type="text" id="fname" name="fname" value="{{ profile.user.first_name }}"><br>
 
     <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" placeholder="Doe"><br><br>
+    <input type="text" id="lname" name="lname" value="{{ profile.user.last_name }}"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" value="{{ profile.user.email }}"><br><br>
 
     <label for="bio"> Bio:</label><br>
-    <textarea id="bio" name="bio"></textarea><br>
+    <textarea id="bio" name="bio">{{ profile.bio }}</textarea><br>
 
      <input type="submit" value="Submit">
 </form>

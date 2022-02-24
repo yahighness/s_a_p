@@ -34,16 +34,17 @@ def home(request):
 
 
 def client(request):
+    profile = Profile.objects.get(user=request.user)
+    context = {"known_user": request.user.is_authenticated, "profile": profile}
     if request.method == "POST":
-        print(request.POST)
-        username = request.POST["username"]
-        user, created = User.objects.get_or_create(username=username, defaults={"first_name": request.POST["fname"], "last_name": request.POST["lname"]})
-        if not created:
-            print(f"username {username} already taken")
-        bio = request.POST["bio"]
-        profile, created = Profile.objects.get_or_create(user=user, defaults={"bio": bio})  
-    context = {"known_user": request.user.is_authenticated}
-            
+        user = profile.user
+        user.first_name = request.POST["fname"]
+        user.last_name = request.POST["lname"]
+        user.email = request.POST["email"]
+        user.save()
+        profile.bio = request.POST["bio"]
+        profile.save()
+  
     return render(request, 'client.html', context=context)
 
 def edit_post(request, post_id):
